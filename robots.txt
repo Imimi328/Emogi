@@ -1,0 +1,6 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://emogi.space/sitemap.xml
+Sitemap: https://info.emogi.space/sitemap.xml
+Sitemap: https://store.emogi.space/sitemap.xml

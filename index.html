@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+<head>
+  <meta charset="utf-8" />
+  <title>Team Emogi — Engineering Imagination into Reality</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Team Emogi unites games, AI, XR, cloud streaming, and space research into human-centered products and prototypes." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <link rel="canonical" href="https://emogi.space/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Team Emogi — Engineering Imagination into Reality" />
+  <meta property="og:description" content="Games, AI, XR, cloud streaming, and space research by Team Emogi." />
+  <meta property="og:url" content="https://emogi.space/" />
+  <meta property="og:site_name" content="Team Emogi" />
+  <meta property="og:image" content="https://i.ibb.co/Hf7gScW8/Emogi-Discord.jpg" />
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Team Emogi — Engineering Imagination into Reality" />
+  <meta name="twitter:description" content="Games, AI, XR, cloud streaming, and space research by Team Emogi." />
+  <meta name="twitter:image" content="https://i.ibb.co/Hf7gScW8/Emogi-Discord.jpg" />
+
+  <!-- Theming -->
+  <meta name="theme-color" content="#00ffcb" />
+  <meta name="color-scheme" content="dark light" />
+
+  <link rel="icon" href="https://i.ibb.co/Hf7gScW8/Emogi-Discord.jpg" />
+  <link rel="apple-touch-icon" href="https://i.ibb.co/Hf7gScW8/Emogi-Discord.jpg" />
+
+  <!-- Preload CSS (async load) -->
+  <link rel="preload" as="style" href="styles.css" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="styles.css" /></noscript>
+
+  <!-- Structured Data JSON-LD -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://emogi.space/#org",
+      "name": "Team Emogi",
+      "url": "https://emogi.space/",
+      "logo": "https://emogi.space/logo.png",
+      "description": "Team Emogi builds at the intersection of games, AI, XR, cloud streaming, and space research.",
+      "email": "vritesh328@outlook.com",
+      "founder": {
+        "@type": "Person",
+        "name": "Ritesh Verma",
+        "url": "https://info.emogi.space/"
+      },
+      "sameAs": []
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://emogi.space/#website",
+      "url": "https://emogi.space/",
+      "name": "Team Emogi",
+      "publisher": { "@id": "https://emogi.space/#org" }
+    }
+  </script>
+
+  <!-- Scripts -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script defer src="app.js"></script>
+</head>
+
+<body>
+  <a class="sr-only sr-only-focusable" href="#main">Skip to content</a>
+
+  <header class="nav" role="navigation" aria-label="Primary">
+    <div class="nav-inner container">
+      <a class="brand" href="https://emogi.space" aria-label="Team Emogi home">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span>Team Emogi</span>
+      </a>
+      <nav class="nav-links" aria-label="Desktop navigation">
+        <a href="#solutions">Solutions</a>
+        <a href="#research">Research</a>
+        <a href="https://info.emogi.space/">Founder</a>
+        <button id="themeToggle" class="theme-btn" aria-label="Toggle theme" aria-pressed="false">☀️</button>
+        <a href="https://store.emogi.space/" class="btn">Explore Store</a>
+      </nav>
+      <button
+        class="menu-btn"
+        id="menuBtn"
+        aria-haspopup="true"
+        aria-expanded="false"
+        aria-controls="mobileNav"
+      >
+        Menu
+      </button>
+    </div>
+
+    <nav id="mobileNav" class="mobile" aria-label="Mobile navigation" aria-hidden="true">
+      <div class="container mobile-list">
+        <a href="#solutions">Solutions</a>
+        <a href="#research">Research</a>
+        <a href="https://info.emogi.space/">Founder</a>
+        <div class="mobile-actions">
+          <button id="themeToggleM" class="theme-btn" aria-label="Toggle theme" aria-pressed="false">☀️</button>
+          <a href="https://store.emogi.space/" class="btn">Explore Store</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero container">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="pill-row" aria-hidden="true">
+            <span class="pill">Games</span>
+            <span class="pill">AI</span>
+            <span class="pill">XR</span>
+            <span class="pill">Cloud</span>
+            <span class="pill">Space</span>
+          </div>
+          <h1 class="hero-title">Engineering imagination into reality</h1>
+          <p class="sub">
+            We craft narrative-driven games and research-grade prototypes in AI, XR, cloud streaming, and space systems.
+          </p>
+          <div class="cta-row">
+            <a class="btn" href="https://store.emogi.space/">Download Games</a>
+            <a class="btn ghost" href="https://info.emogi.space/">Meet the Founder</a>
+          </div>
+        </div>
+        <canvas id="heroCanvas" class="hero-fx" aria-hidden="true" role="img" aria-label="Animated particle background"></canvas>
+      </div>
+      <div class="hero-badges">
+        <div class="badge reveal">Low-latency Cloud</div>
+        <div class="badge reveal">Thrust Vector Control</div>
+        <div class="badge reveal">Secure Streaming</div>
+        <div class="badge reveal">Unity Engineering</div>
+      </div>
+    </section>
+
+    <section id="solutions" class="section container">
+      <h2 class="reveal">What we build</h2>
+      <p class="muted reveal">
+        Multidisciplinary products blending creativity with engineering rigor.
+      </p>
+      <div class="grid">
+        <article class="card reveal">
+          <h3>Game Development</h3>
+          <p class="muted">
+            Atmospheric, narrative-driven titles with bespoke mechanics and polish.
+          </p>
+          <ul class="muted bullet">
+            <li>Fragments of Reality (Yume)</li>
+            <li>Where the Light Used to Be</li>
+          </ul>
+          <a class="btn ghost" href="https://store.emogi.space/">Play & Download</a>
+        </article>
+
+        <article class="card reveal">
+          <h3>AI & Computing</h3>
+          <p class="muted">Practical AI, secure data systems, and quantum-accelerated workflows.</p>
+        </article>
+
+        <article class="card reveal">
+          <h3>XR & Cloud Streaming</h3>
+          <p class="muted">VR/AR experiences and low-latency cloud gaming with compact codecs.</p>
+        </article>
+
+        <article class="card reveal">
+          <h3>Space Research</h3>
+          <p class="muted">Rocketry and robotics integrating telemetry, sensors, and autonomy.</p>
+        </article>
+
+        <article class="card reveal">
+          <h3>Education & Tooling</h3>
+          <p class="muted">Kits and open tools for computational learning.</p>
+        </article>
+
+        <article class="card reveal">
+          <h3>Hardware Integration</h3>
+          <p class="muted">Embedded software bridging electronics and real-time control.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="research" class="section container">
+      <h2 class="reveal">Research highlights</h2>
+      <div class="grid">
+        <article class="card reveal">
+          <h3>Rocket & Rover Prototype</h3>
+          <p class="muted">Solid-fuel launch, telemetry, autonomous rover, and thrust vector control.</p>
+        </article>
+        <article class="card reveal">
+          <h3>AI + Quantum Explorations</h3>
+          <p class="muted">Hybrid pipelines for medicine and inference acceleration.</p>
+        </article>
+        <article class="card reveal">
+          <h3>Education Tooling</h3>
+          <p class="muted">Kits and open tools for computational learning.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer container" role="contentinfo">
+    <div class="foot-flex">
+      <div>© <span id="year"></span> Team Emogi. All rights reserved.</div>
+      <nav class="foot-links">
+        <a href="https://store.emogi.space/">Store</a>
+        <a href="https://info.emogi.space/">Founder</a>
+        <a href="#solutions">Solutions</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
