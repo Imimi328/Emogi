@@ -1,68 +1,117 @@
 <!DOCTYPE html>
-<html lang="en" prefix="og: https://ogp.me/ns#">
+<html lang="en">
+
 <head>
-  <meta charset="utf-8" />
-  <title>Team Emogi — Engineering Imagination into Reality</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Team Emogi unites games, AI, XR, cloud streaming, and space research into human-centered products and prototypes." />
-  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Ritesh Verma">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+
+  <!-- FOUC Prevention Script -->
+  <script>
+    (function () {
+      try {
+        var theme = localStorage.getItem('theme');
+        var prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+        if (theme === 'light' || (!theme && prefersLight)) {
+          document.documentElement.setAttribute('data-theme', 'light');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) { }
+    })();
+  </script>
+
+
+  <!-- PRIMARY TITLE -->
+  <title>Team Emogi | AI, Games, XR, Cloud & Space Technology</title>
+
+  <!-- SEO META -->
+  <meta name="description"
+    content="Team Emogi crafts narrative-driven games and research-grade prototypes in artificial intelligence, XR, cloud streaming, and space engineering systems." />
+  <meta name="keywords"
+    content="Team Emogi, Game Development, AI Engineering, XR Developer, Cloud Gaming, Space Technology, Ritesh Verma" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- CANONICAL -->
   <link rel="canonical" href="https://emogi.space/" />
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Team Emogi — Engineering Imagination into Reality" />
-  <meta property="og:description" content="Games, AI, XR, cloud streaming, and space research by Team Emogi." />
-  <meta property="og:url" content="https://emogi.space/" />
-  <meta property="og:site_name" content="Team Emogi" />
-  <meta property="og:image" content="https://i.ibb.co/Hf7gScW8/Emogi-Discord.jpg" />
+  <!-- ICON -->
+  <link rel="icon" href="https://github.com/Imimi328/Ritesh-Verma/blob/Images/Artboard.png?raw=true">
 
-  <!-- Twitter Cards -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Team Emogi — Engineering Imagination into Reality" />
-  <meta name="twitter:description" content="Games, AI, XR, cloud streaming, and space research by Team Emogi." />
-  <meta name="twitter:image" content="https://i.ibb.co/Hf7gScW8/Emogi-Discord.jpg" />
+  <!-- OPEN GRAPH -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Team Emogi | Engineering Imagination into Reality">
+  <meta property="og:description"
+    content="We craft narrative-driven games and research-grade prototypes in AI, XR, cloud streaming, and space systems.">
+  <meta property="og:url" content="https://emogi.space/">
+  <meta property="og:image" content="https://github.com/Imimi328/Ritesh-Verma/blob/Images/Artboard.png?raw=true">
+  <meta property="og:site_name" content="Team Emogi">
 
-  <!-- Theming -->
-  <meta name="theme-color" content="#00ffcb" />
-  <meta name="color-scheme" content="dark light" />
+  <!-- TWITTER -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Team Emogi | Engineering Imagination into Reality">
+  <meta name="twitter:description"
+    content="We craft narrative-driven games and research-grade prototypes in AI, XR, cloud streaming, and space systems.">
+  <meta name="twitter:image" content="https://github.com/Imimi328/Ritesh-Verma/blob/Images/Artboard.png?raw=true">
 
-  <link rel="icon" href="https://i.ibb.co/Hf7gScW8/Emogi-Discord.jpg" />
-  <link rel="apple-touch-icon" href="https://i.ibb.co/Hf7gScW8/Emogi-Discord.jpg" />
-
-  <!-- Preload CSS (async load) -->
-  <link rel="preload" as="style" href="styles.css" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="styles.css" /></noscript>
-
-  <!-- Structured Data JSON-LD -->
-  <!-- Structured Data JSON-LD -->
+  <!-- 🔥 UNIFIED STRUCTURED DATA -->
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "@id": "https://emogi.space/#org",
-      "name": "Team Emogi",
-      "url": "https://emogi.space/",
-      "logo": "https://emogi.space/logo.png",
-      "description": "Team Emogi builds at the intersection of games, AI, XR, cloud streaming, and space research.",
-      "email": "vritesh328@outlook.com",
-      "founder": {
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
         "@type": "Person",
+        "@id": "https://info.emogi.space/#ritesh",
         "name": "Ritesh Verma",
-        "url": "https://info.emogi.space/"
+        "url": "https://info.emogi.space/",
+        "image": "https://raw.githubusercontent.com/Imimi328/Ritesh-Verma/refs/heads/Images/RiteshVerma.jpg",
+        "jobTitle": "Founder and CEO",
+        "worksFor": {
+          "@id": "https://emogi.space/#org"
+        },
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "JSPM University"
+        },
+        "sameAs": [
+          "https://github.com/Imimi328",
+          "https://www.youtube.com/@TeamEmogi",
+          "https://www.youtube.com/@imimigeimeo",
+          "https://www.instagram.com/team_emogi/"
+        ]
       },
-      "sameAs": []
-    }
+      {
+        "@type": "Organization",
+        "@id": "https://emogi.space/#org",
+        "name": "Team Emogi",
+        "url": "https://emogi.space/",
+        "logo": "https://github.com/Imimi328/Ritesh-Verma/blob/Images/Artboard.png?raw=true",
+        "founder": {
+          "@id": "https://info.emogi.space/#ritesh"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://emogi.space/#website",
+        "name": "Team Emogi",
+        "url": "https://emogi.space/",
+        "publisher": {
+          "@id": "https://emogi.space/#org"
+        }
+      }
+    ]
+  }
   </script>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "@id": "https://emogi.space/#website",
-      "url": "https://emogi.space/",
-      "name": "Team Emogi",
-      "publisher": { "@id": "https://emogi.space/#org" }
-    }
-  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+
 
   <!-- Scripts -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -75,24 +124,25 @@
 
   <header class="nav" role="navigation" aria-label="Primary">
     <div class="nav-inner container">
-      <a class="brand" href="https://emogi.space" aria-label="Team Emogi home">
-        <span class="brand-dot" aria-hidden="true"></span>
-        <span>Team Emogi</span>
+      <a class="logo" href="https://emogi.space/" aria-label="Team Emogi Official Website"
+        title="Team Emogi Official Website">
+        <img 
+          src="https://github.com/Imimi328/Ritesh-Verma/blob/Images/Artboard.png?raw=true"
+          alt="Team Emogi Official Logo"
+          class="logo-img"
+          width="32"
+          height="32">
+        Team Emogi
       </a>
       <nav class="nav-links" aria-label="Desktop navigation">
         <a href="#solutions">Solutions</a>
         <a href="#research">Research</a>
-        <a href="https://info.emogi.space/">Founder</a>
+        <a href="https://info.emogi.space/" title="Meet the Founder: Ritesh Verma">Ritesh Verma – Founder of Team
+          Emogi</a>
         <button id="themeToggle" class="theme-btn" aria-label="Toggle theme" aria-pressed="false">☀️</button>
         <a href="https://emogi.itch.io/" class="btn">Explore Store</a>
       </nav>
-      <button
-        class="menu-btn"
-        id="menuBtn"
-        aria-haspopup="true"
-        aria-expanded="false"
-        aria-controls="mobileNav"
-      >
+      <button class="menu-btn" id="menuBtn" aria-haspopup="true" aria-expanded="false" aria-controls="mobileNav">
         Menu
       </button>
     </div>
@@ -101,7 +151,7 @@
       <div class="container mobile-list">
         <a href="#solutions">Solutions</a>
         <a href="#research">Research</a>
-        <a href="https://info.emogi.space/">Founder</a>
+        <a href="https://info.emogi.space/" title="Meet the Founder: Ritesh Verma">Meet the Founder: Ritesh Verma</a>
         <div class="mobile-actions">
           <button id="themeToggleM" class="theme-btn" aria-label="Toggle theme" aria-pressed="false">☀️</button>
           <a href="https://emogi.itch.io/" class="btn">Explore Store</a>
@@ -121,22 +171,18 @@
             <span class="pill">Cloud</span>
             <span class="pill">Space</span>
           </div>
-          <h1 class="hero-title">Engineering imagination into reality</h1>
+          <h1 class="hero-title">Team Emogi:<br>Engineering <span>imagination</span> into reality</h1>
           <p class="sub">
             We craft narrative-driven games and research-grade prototypes in AI, XR, cloud streaming, and space systems.
           </p>
           <div class="cta-row">
             <a class="btn" href="https://emogi.itch.io/">Download Games</a>
-            <a class="btn ghost" href="https://info.emogi.space/">Meet the Founder</a>
+            <a class="btn ghost" href="https://info.emogi.space/"
+              title="Ritesh Verma – Founder and CEO of Team Emogi, Game Developer and AI Engineer">Meet the Founder:
+              Ritesh Verma</a>
           </div>
         </div>
-        <canvas id="heroCanvas" class="hero-fx" aria-hidden="true" role="img" aria-label="Animated particle background"></canvas>
-      </div>
-      <div class="hero-badges">
-        <div class="badge reveal">Low-latency Cloud</div>
-        <div class="badge reveal">Thrust Vector Control</div>
-        <div class="badge reveal">Secure Streaming</div>
-        <div class="badge reveal">Unity Engineering</div>
+        <canvas id="heroCanvas" class="hero-fx" aria-hidden="true"></canvas>
       </div>
     </section>
 
@@ -161,26 +207,32 @@
         <article class="card reveal">
           <h3>AI & Computing</h3>
           <p class="muted">Practical AI, secure data systems, and quantum-accelerated workflows.</p>
+          <a class="card-link" href="https://info.emogi.space/achievements.html">View AI Chatbot & Music API →</a>
         </article>
 
         <article class="card reveal">
           <h3>XR & Cloud Streaming</h3>
           <p class="muted">VR/AR experiences and low-latency cloud gaming with compact codecs.</p>
+          <a class="card-link" href="https://github.com/Imimi328" target="_blank">View GitHub Profile →</a>
         </article>
 
         <article class="card reveal">
           <h3>Space Research</h3>
           <p class="muted">Rocketry and robotics integrating telemetry, sensors, and autonomy.</p>
+          <a class="card-link" href="https://info.emogi.space/#rocket">Watch Rocket Prototypes →</a>
         </article>
 
         <article class="card reveal">
           <h3>Education & Tooling</h3>
           <p class="muted">Kits and open tools for computational learning.</p>
+          <a class="card-link" href="https://imimi328.github.io/OBS-Scene-Controller/" target="_blank">View OBS
+            Controller Tool →</a>
         </article>
 
         <article class="card reveal">
           <h3>Hardware Integration</h3>
           <p class="muted">Embedded software bridging electronics and real-time control.</p>
+          <a class="card-link" href="https://info.emogi.space/achievements.html">View Rescue Rover Award →</a>
         </article>
       </div>
     </section>
@@ -191,14 +243,17 @@
         <article class="card reveal">
           <h3>Rocket & Rover Prototype</h3>
           <p class="muted">Solid-fuel launch, telemetry, autonomous rover, and thrust vector control.</p>
+          <a class="card-link" href="https://info.emogi.space/#rocket">View Chandrayaan-3 Inspired Project →</a>
         </article>
         <article class="card reveal">
           <h3>AI + Quantum Explorations</h3>
           <p class="muted">Hybrid pipelines for medicine and inference acceleration.</p>
+          <a class="card-link" href="https://info.emogi.space/achievements.html">View Custom EmogiGPT LLM →</a>
         </article>
         <article class="card reveal">
           <h3>Education Tooling</h3>
           <p class="muted">Kits and open tools for computational learning.</p>
+          <a class="card-link" href="https://github.com/Imimi328" target="_blank">View GitHub Research →</a>
         </article>
       </div>
     </section>
@@ -209,12 +264,13 @@
       <div>© <span id="year"></span> Team Emogi. All rights reserved.</div>
       <nav class="foot-links">
         <a href="https://emogi.itch.io/">Store</a>
-        <a href="https://info.emogi.space/">Founder</a>
+        <a href="https://info.emogi.space/"
+          title="Ritesh Verma – Founder and CEO of Team Emogi, Game Developer and AI Engineer">Ritesh Verma – CEO of
+          Team Emogi</a>
         <a href="#solutions">Solutions</a>
       </nav>
     </div>
   </footer>
 </body>
+
 </html>
-
-
