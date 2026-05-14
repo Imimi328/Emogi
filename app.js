@@ -118,78 +118,117 @@
     });
   }
 
-  // Canvas animation (respects reduced motion)
-  const canvas = d.getElementById("heroCanvas");
-  if (canvas && !prefersReduced.matches) {
-    const ctx = canvas.getContext("2d");
-    const DPR = window.devicePixelRatio || 1;
-    let width, height;
+  // Three.js 3D Background
+  const canvas = d.getElementById("bg-canvas");
+  if (canvas && window.THREE && !prefersReduced.matches) {
+    const scene = new THREE.Scene();
+    
+    // Read theme colors
+    const getColors = () => {
+      const style = getComputedStyle(document.documentElement);
+      return {
+        bg: new THREE.Color(style.getPropertyValue("--bg").trim() || "#050505"),
+        fg: new THREE.Color(style.getPropertyValue("--fg").trim() || "#E2E8F0"),
+        accent: new THREE.Color(style.getPropertyValue("--accent").trim() || "#00FFCB")
+      };
+    };
+    
+    let colors = getColors();
+    scene.background = colors.bg;
+    scene.fog = new THREE.FogExp2(colors.bg, 0.002);
 
-    function resizeCanvas() {
-      width = canvas.clientWidth * DPR;
-      height = 400 * DPR;
-      canvas.width = width;
-      canvas.height = height;
-      canvas.style.width = canvas.clientWidth + "px";
-      canvas.style.height = "400px";
-      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    // Start camera further back
+    camera.position.z = 50;
+    camera.position.y = 10;
+
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Optimize for high DPI but cap at 2
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    // Highly optimized InstancedMesh for thousands of floating objects
+    const count = 1500;
+    const geometry = new THREE.IcosahedronGeometry(1, 0); // Low poly
+    const material = new THREE.MeshBasicMaterial({ 
+      color: colors.accent, 
+      wireframe: true,
+      transparent: true,
+      opacity: 0.3
+    });
+
+    const instancedMesh = new THREE.InstancedMesh(geometry, material, count);
+    const dummy = new THREE.Object3D();
+
+    // Distribute objects in a massive tunnel/field
+    for (let i = 0; i < count; i++) {
+      const x = (Math.random() - 0.5) * 200;
+      const y = (Math.random() - 0.5) * 200;
+      const z = (Math.random() - 0.5) * 500;
+      
+      dummy.position.set(x, y, z);
+      
+      // Random rotation
+      dummy.rotation.x = Math.random() * Math.PI;
+      dummy.rotation.y = Math.random() * Math.PI;
+      
+      // Random scale
+      const scale = Math.random() * 2 + 0.5;
+      dummy.scale.set(scale, scale, scale);
+      
+      dummy.updateMatrix();
+      instancedMesh.setMatrixAt(i, dummy.matrix);
     }
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
+    
+    scene.add(instancedMesh);
 
-    class Dot {
-      constructor() {
-        this.x = Math.random() * width;
-        this.y = Math.random() * height;
-        this.vx = Math.random() * 1.2 - 0.6;
-        this.vy = Math.random() * 1.2 - 0.6;
-        this.radius = Math.random() * 2 + 1;
-      }
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        const fg = getComputedStyle(document.documentElement).getPropertyValue("--fg").trim();
-        ctx.fillStyle = fg || "#fff";
-        ctx.fill();
-      }
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        if (this.x < 0 || this.x > width) this.vx *= -1;
-        if (this.y < 0 || this.y > height) this.vy *= -1;
-      }
-    }
+    // Handle Resize
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
 
-    const dots = Array.from({ length: 100 }, () => new Dot());
+    // Handle Theme Toggle Update
+    const observer = new MutationObserver(() => {
+      colors = getColors();
+      scene.background = colors.bg;
+      scene.fog.color = colors.bg;
+      material.color = colors.accent;
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
-    function drawLines() {
-      const accent = getComputedStyle(document.documentElement).getPropertyValue("--accent").trim();
-      ctx.strokeStyle = accent || "rgba(0,255,203,0.6)";
-      ctx.lineWidth = 0.6;
-      for (let i = 0; i < dots.length; i++) {
-        for (let j = i + 1; j < dots.length; j++) {
-          const dx = dots[i].x - dots[j].x;
-          const dy = dots[i].y - dots[j].y;
-          const dist = Math.hypot(dx, dy);
-          if (dist < 120) {
-            ctx.globalAlpha = 1 - dist / 120;
-            ctx.beginPath();
-            ctx.moveTo(dots[i].x, dots[i].y);
-            ctx.lineTo(dots[j].x, dots[j].y);
-            ctx.stroke();
-          }
-        }
-      }
-      ctx.globalAlpha = 1;
-    }
+    // Scroll Interaction: Fly through the 3D space
+    let scrollY = window.scrollY;
+    let targetZ = 50;
+    
+    window.addEventListener('scroll', () => {
+      scrollY = window.scrollY;
+      // Map scroll to Z depth (scrolling down moves camera forward negatively into the Z axis)
+      targetZ = 50 - (scrollY * 0.05); 
+    });
 
+    // Animation Loop
+    const clock = new THREE.Clock();
+    
     function animate() {
-      ctx.clearRect(0, 0, width, height);
-      dots.forEach((d) => { d.update(); d.draw(); });
-      drawLines();
       requestAnimationFrame(animate);
-    }
+      const delta = clock.getDelta();
+      
+      // Slowly rotate the entire field
+      instancedMesh.rotation.x += 0.05 * delta;
+      instancedMesh.rotation.y += 0.03 * delta;
+      
+      // Smoothly interpolate camera position for that premium buttery feel
+      camera.position.z += (targetZ - camera.position.z) * 0.05;
+      
+      // Add subtle floating to camera
+      const elapsedTime = clock.getElapsedTime();
+      camera.position.y = 10 + Math.sin(elapsedTime * 0.5) * 2;
+      camera.position.x = Math.cos(elapsedTime * 0.3) * 2;
 
+      renderer.render(scene, camera);
+    }
+    
     animate();
   }
 })();
