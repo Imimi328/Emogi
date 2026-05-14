@@ -54,17 +54,48 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: 'Inter', system-ui, sans-serif;
-  background-color: var(--bg);
+  color: var(--fg);
+  scroll-behavior: smooth;
+  line-height: 1.6;
+  background-color: transparent;
+}
+
+#bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  filter: blur(6px); /* Blurs the 3D particles natively */
+  transform: scale(1.05); /* Prevents blurred edges from showing the background behind the canvas */
+}
+
+#ui-layer {
+  position: relative;
+  z-index: 1;
+  background-color: rgba(var(--bg-rgb), 0.3);
+}
+
+/* Redefine root backgrounds to be semi-transparent or let the cards do the heavy lifting.
+   Actually, the user wants the page to be 3D. A fully transparent background for the UI layer is best. */
+:root {
+  --bg-dark-rgb: 5, 5, 5;
+  --bg-light-rgb: 248, 250, 252;
+  --bg-rgb: var(--bg-dark-rgb);
+}
+[data-theme="light"] {
+  --bg-rgb: var(--bg-light-rgb);
+}
+#ui-layer {
   background-image: 
     linear-gradient(var(--grid-color) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
   background-size: 40px 40px;
   background-position: center center;
-  color: var(--fg);
-  scroll-behavior: smooth;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  line-height: 1.6;
 }
+
 
 /* Container */
 .container {
@@ -97,8 +128,13 @@ a:hover {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--bg);
+  background: rgba(var(--bg-dark-rgb), 0.6);
   border-bottom: 1px solid var(--card-border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+[data-theme="light"] .nav {
+  background: rgba(var(--bg-light-rgb), 0.7);
 }
 .nav-inner {
   display: flex;
@@ -236,18 +272,19 @@ a:hover {
 .hero {
   padding: 120px 0 80px;
 }
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
+.center-hero {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-}
-@media (max-width: 960px) {
-  .hero-grid { grid-template-columns: 1fr; }
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .badge-row {
   margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
 }
 .hero-badge {
   display: inline-block;
@@ -263,6 +300,7 @@ a:hover {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+  justify-content: center;
   margin-bottom: 24px;
 }
 .pill {
@@ -288,19 +326,13 @@ a:hover {
   font-size: 1.15rem;
   color: var(--muted);
   max-width: 90%;
-  margin-bottom: 40px;
+  margin: 0 auto 40px auto;
 }
 .cta-row {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
-}
-
-.hero-fx {
-  width: 100%;
-  height: 400px;
-  background: var(--card);
-  border: 1px solid var(--card-border);
+  justify-content: center;
 }
 
 /* Sections */
@@ -324,17 +356,24 @@ a:hover {
 
 /* Engineering Cards (Grid Items) */
 .card {
-  background: var(--bg);
+  background: rgba(var(--bg-dark-rgb), 0.4);
   padding: 40px 30px;
-  transition: background 0.2s, box-shadow 0.2s, border-color 0.2s;
+  transition: transform 0.3s ease, background 0.2s, box-shadow 0.2s, border-color 0.2s;
   display: flex;
   flex-direction: column;
   border: 1px solid transparent;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
+[data-theme="light"] .card {
+  background: rgba(var(--bg-light-rgb), 0.6);
+}
+
 .card:hover {
+  transform: translateY(-5px);
   background: var(--card);
   border-color: var(--accent);
-  box-shadow: inset 0 0 20px var(--accent-glow);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2), inset 0 0 20px var(--accent-glow);
   z-index: 10;
   position: relative;
 }
