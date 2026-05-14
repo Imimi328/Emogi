@@ -120,57 +120,59 @@
 
 
   <!-- Scripts -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script defer src="app.js"></script>
 </head>
 
 <body>
-  <a class="sr-only sr-only-focusable" href="#main">Skip to content</a>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <div id="ui-layer">
+    <a class="sr-only sr-only-focusable" href="#main">Skip to content</a>
 
-  <header class="nav" role="navigation" aria-label="Primary">
-    <div class="nav-inner container">
-      <a class="logo" href="https://emogi.space/" aria-label="Team Emogi Official Website"
-        title="Team Emogi Official Website">
-        <img 
-          src="https://github.com/Imimi328/Ritesh-Verma/blob/Images/Artboard.png?raw=true"
-          alt="Team Emogi Official Logo"
-          class="logo-img"
-          width="32"
-          height="32">
-        Team Emogi
-      </a>
-      <nav class="nav-links" aria-label="Desktop navigation">
-        <a href="#solutions">Solutions</a>
-        <a href="#research">Research</a>
-        <a href="https://info.emogi.space/" title="Meet the Founder: Ritesh Verma">Ritesh Verma – Founder of Team
-          Emogi</a>
-        <a href="https://virtualworks.space/" title="VirtualWorks Internships" target="_blank">VirtualWorks</a>
-        <button id="themeToggle" class="theme-btn" aria-label="Toggle theme" aria-pressed="false">☀️</button>
-        <a href="https://emogi.itch.io/" class="btn">Explore Store</a>
-      </nav>
-      <button class="menu-btn" id="menuBtn" aria-haspopup="true" aria-expanded="false" aria-controls="mobileNav">
-        Menu
-      </button>
-    </div>
-
-    <nav id="mobileNav" class="mobile" aria-label="Mobile navigation" aria-hidden="true">
-      <div class="container mobile-list">
-        <a href="#solutions">Solutions</a>
-        <a href="#research">Research</a>
-        <a href="https://virtualworks.space/" target="_blank" title="VirtualWorks Internships">VirtualWorks</a>
-        <a href="https://info.emogi.space/" title="Meet the Founder: Ritesh Verma">Meet the Founder: Ritesh Verma</a>
-        <div class="mobile-actions">
-          <button id="themeToggleM" class="theme-btn" aria-label="Toggle theme" aria-pressed="false">☀️</button>
+    <header class="nav" role="navigation" aria-label="Primary">
+      <div class="nav-inner container">
+        <a class="logo" href="https://emogi.space/" aria-label="Team Emogi Official Website"
+          title="Team Emogi Official Website">
+          <img 
+            src="https://github.com/Imimi328/Ritesh-Verma/blob/Images/Artboard.png?raw=true"
+            alt="Team Emogi Official Logo"
+            class="logo-img"
+            width="32"
+            height="32">
+          Team Emogi
+        </a>
+        <nav class="nav-links" aria-label="Desktop navigation">
+          <a href="#solutions">Solutions</a>
+          <a href="#research">Research</a>
+          <a href="https://info.emogi.space/" title="Meet the Founder: Ritesh Verma">Ritesh Verma – Founder of Team
+            Emogi</a>
+          <a href="https://virtualworks.space/" title="VirtualWorks Internships" target="_blank">VirtualWorks</a>
+          <button id="themeToggle" class="theme-btn" aria-label="Toggle theme" aria-pressed="false">☀️</button>
           <a href="https://emogi.itch.io/" class="btn">Explore Store</a>
-        </div>
+        </nav>
+        <button class="menu-btn" id="menuBtn" aria-haspopup="true" aria-expanded="false" aria-controls="mobileNav">
+          Menu
+        </button>
       </div>
-    </nav>
-  </header>
 
-  <main id="main">
-    <section class="hero container">
-      <div class="hero-grid">
+      <nav id="mobileNav" class="mobile" aria-label="Mobile navigation" aria-hidden="true">
+        <div class="container mobile-list">
+          <a href="#solutions">Solutions</a>
+          <a href="#research">Research</a>
+          <a href="https://virtualworks.space/" target="_blank" title="VirtualWorks Internships">VirtualWorks</a>
+          <a href="https://info.emogi.space/" title="Meet the Founder: Ritesh Verma">Meet the Founder: Ritesh Verma</a>
+          <div class="mobile-actions">
+            <button id="themeToggleM" class="theme-btn" aria-label="Toggle theme" aria-pressed="false">☀️</button>
+            <a href="https://emogi.itch.io/" class="btn">Explore Store</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero container center-hero">
         <div class="hero-copy">
           <div class="badge-row">
             <span class="hero-badge">> INIT: VirtualWorks - The #1 Free Virtual Internship Platform</span>
@@ -193,9 +195,7 @@
               Ritesh Verma</a>
           </div>
         </div>
-        <canvas id="heroCanvas" class="hero-fx" aria-hidden="true"></canvas>
-      </div>
-    </section>
+      </section>
 
     <section id="solutions" class="section container">
       <h2 class="reveal">What we build</h2>
@@ -256,6 +256,11 @@
           <p class="muted">#1 Free Virtual Internship Online. MSME Verified.</p>
           <a class="card-link highlight-link" href="https://virtualworks.space/" target="_blank">Access Portal →</a>
         </article>
+        <article class="card highlight-card reveal">
+          <h3>Thiranex Education</h3>
+          <p class="muted">End-to-End System Architecture: Front-end, Back-end, and Cloud Hosting.</p>
+          <a class="card-link highlight-link" href="https://www.thiranex.in/" target="_blank">View Platform →</a>
+        </article>
         <article class="card reveal">
           <h3>Rocket & Rover Prototype</h3>
           <p class="muted">Solid-fuel launch, telemetry, autonomous rover, and thrust vector control.</p>
@@ -291,6 +296,7 @@
       </nav>
     </div>
   </footer>
+  </div>
 </body>
 
 </html>
